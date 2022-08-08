@@ -17,9 +17,18 @@ server.listen(PORT, () => {
   console.log(` ✅ Server running on port ${PORT}`);
 });
 
-export const io = new Server(server, {
+const io = new Server(server, {
   cors: {
     origin: "*",
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   },
 });
+
+io.on("connection", (socket) => {
+  console.log("New client connected" + socket.id);
+  socket.on("disconnect", () => {
+    console.log("Client disconnected" + socket.id);
+  });
+});
+
+export default server;

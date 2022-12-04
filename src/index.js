@@ -4,7 +4,7 @@ import { Server } from "socket.io";
 import cors from "cors";
 import ip from "ip";
 
-const PORT = process.env.PORT || 8050;
+const PORT = process.env.PORT || 3000;
 
 const app = express();
 app.use(cors());
